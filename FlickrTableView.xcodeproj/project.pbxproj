@@ -7,25 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A663FB532017AE160087CDAF /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = A663FB522017AE160087CDAF /* NetworkService.m */; };
+		A663FB5A2017C4A80087CDAF /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A663FB592017C4A80087CDAF /* CustomCollectionViewCell.m */; };
 		A6FF04362014DF8F006142B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FF04352014DF8F006142B7 /* AppDelegate.m */; };
 		A6FF04392014DF8F006142B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FF04382014DF8F006142B7 /* ViewController.m */; };
-		A6FF043C2014DF8F006142B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FF043A2014DF8F006142B7 /* Main.storyboard */; };
 		A6FF043E2014DF8F006142B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FF043D2014DF8F006142B7 /* Assets.xcassets */; };
 		A6FF04412014DF8F006142B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6FF043F2014DF8F006142B7 /* LaunchScreen.storyboard */; };
 		A6FF04442014DF8F006142B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FF04432014DF8F006142B7 /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A663FB512017AE160087CDAF /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
+		A663FB522017AE160087CDAF /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
+		A663FB542017AE670087CDAF /* NetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkServiceProtocol.h; sourceTree = "<group>"; };
+		A663FB582017C4A80087CDAF /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
+		A663FB592017C4A80087CDAF /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
 		A6FF04312014DF8F006142B7 /* FlickrTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FF04342014DF8F006142B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6FF04352014DF8F006142B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A6FF04372014DF8F006142B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A6FF04382014DF8F006142B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A6FF043B2014DF8F006142B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6FF043D2014DF8F006142B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6FF04402014DF8F006142B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6FF04422014DF8F006142B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6FF04432014DF8F006142B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A6FF044A2014E2CD006142B7 /* FlickrAPIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +68,16 @@
 				A6FF04352014DF8F006142B7 /* AppDelegate.m */,
 				A6FF04372014DF8F006142B7 /* ViewController.h */,
 				A6FF04382014DF8F006142B7 /* ViewController.m */,
-				A6FF043A2014DF8F006142B7 /* Main.storyboard */,
 				A6FF043D2014DF8F006142B7 /* Assets.xcassets */,
 				A6FF043F2014DF8F006142B7 /* LaunchScreen.storyboard */,
 				A6FF04422014DF8F006142B7 /* Info.plist */,
 				A6FF04432014DF8F006142B7 /* main.m */,
+				A6FF044A2014E2CD006142B7 /* FlickrAPIKey.h */,
+				A663FB512017AE160087CDAF /* NetworkService.h */,
+				A663FB522017AE160087CDAF /* NetworkService.m */,
+				A663FB542017AE670087CDAF /* NetworkServiceProtocol.h */,
+				A663FB582017C4A80087CDAF /* CustomCollectionViewCell.h */,
+				A663FB592017C4A80087CDAF /* CustomCollectionViewCell.m */,
 			);
 			path = FlickrTableView;
 			sourceTree = "<group>";
@@ -131,7 +142,6 @@
 			files = (
 				A6FF04412014DF8F006142B7 /* LaunchScreen.storyboard in Resources */,
 				A6FF043E2014DF8F006142B7 /* Assets.xcassets in Resources */,
-				A6FF043C2014DF8F006142B7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,21 +154,15 @@
 			files = (
 				A6FF04392014DF8F006142B7 /* ViewController.m in Sources */,
 				A6FF04442014DF8F006142B7 /* main.m in Sources */,
+				A663FB532017AE160087CDAF /* NetworkService.m in Sources */,
 				A6FF04362014DF8F006142B7 /* AppDelegate.m in Sources */,
+				A663FB5A2017C4A80087CDAF /* CustomCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A6FF043A2014DF8F006142B7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A6FF043B2014DF8F006142B7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A6FF043F2014DF8F006142B7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
