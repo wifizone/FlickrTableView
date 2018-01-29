@@ -96,6 +96,7 @@ static const CGFloat searchBarHeight = 40;
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    self.images = [NSMutableArray new];
     [self.networkService startImageLoading:searchBar.text];
 }
 
