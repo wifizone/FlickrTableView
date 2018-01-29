@@ -19,6 +19,7 @@ static const CGFloat searchBarHeight = 40;
 @property (nonatomic,strong) UISearchBar *mySearchBar;
 @property NSMutableArray <UIImage*> *images;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NetworkService *networkService;
 
 @end
 
@@ -26,13 +27,16 @@ static const CGFloat searchBarHeight = 40;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
     [self prepareUI];
 }
 
 - (void)prepareUI
 {
-    [self loadModel];
+    self.images = [NSMutableArray new];
+    self.networkService = [NetworkService new];
+    self.networkService.output = self;
     [self prepareCollectionView];
     [self prepareSearchBar];
 }
@@ -59,16 +63,6 @@ static const CGFloat searchBarHeight = 40;
     [self.view addSubview:self.mySearchBar];
 }
 
-- (void)loadModel
-{
-    NSMutableArray *mutableImageArray = [NSMutableArray arrayWithCapacity:12];
-    for (NSInteger i = 0; i < 12; i++)
-    {
-        NSString *imageName = [NSString stringWithFormat:@"%ld", (long)i];
-        [mutableImageArray addObject:[UIImage imageNamed:imageName]];
-    }
-    self.images = [NSMutableArray arrayWithArray:mutableImageArray];
-}
 
 - (void)loadModelWithImages: (NSData *)images
 {
@@ -100,11 +94,9 @@ static const CGFloat searchBarHeight = 40;
     return CGSizeMake(100, 100);
 }
 
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NetworkService *service = [NetworkService new];
-    [service startImageLoading:searchText];
-    
+    [self.networkService startImageLoading:searchBar.text];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,8 +106,9 @@ static const CGFloat searchBarHeight = 40;
 
 -(void)loadingIsDoneWithDataRecieved:(NSData *)dataRecieved
 {
-    NSData *someData = [NSData dataWithData:dataRecieved];
-    NSLog(@"gGjjjjgvcfvjhvycggcchgjhv");
+    NSLog(@"Image downloaded");
+    [self.images addObject:[UIImage imageWithData:dataRecieved]];
+    [self.myCollectionView reloadData];
 }
 
 

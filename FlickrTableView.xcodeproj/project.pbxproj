@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A663FB532017AE160087CDAF /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = A663FB522017AE160087CDAF /* NetworkService.m */; };
 		A663FB5A2017C4A80087CDAF /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A663FB592017C4A80087CDAF /* CustomCollectionViewCell.m */; };
+		A6DA2267201F7E9A0092650A /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DA2266201F7E9A0092650A /* NetworkHelper.m */; };
 		A6FF04362014DF8F006142B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FF04352014DF8F006142B7 /* AppDelegate.m */; };
 		A6FF04392014DF8F006142B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FF04382014DF8F006142B7 /* ViewController.m */; };
 		A6FF043E2014DF8F006142B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FF043D2014DF8F006142B7 /* Assets.xcassets */; };
@@ -22,6 +23,8 @@
 		A663FB542017AE670087CDAF /* NetworkServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkServiceProtocol.h; sourceTree = "<group>"; };
 		A663FB582017C4A80087CDAF /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		A663FB592017C4A80087CDAF /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
+		A6DA2265201F7E9A0092650A /* NetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkHelper.h; sourceTree = "<group>"; };
+		A6DA2266201F7E9A0092650A /* NetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkHelper.m; sourceTree = "<group>"; };
 		A6FF04312014DF8F006142B7 /* FlickrTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6FF04342014DF8F006142B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6FF04352014DF8F006142B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,6 +81,8 @@
 				A663FB542017AE670087CDAF /* NetworkServiceProtocol.h */,
 				A663FB582017C4A80087CDAF /* CustomCollectionViewCell.h */,
 				A663FB592017C4A80087CDAF /* CustomCollectionViewCell.m */,
+				A6DA2265201F7E9A0092650A /* NetworkHelper.h */,
+				A6DA2266201F7E9A0092650A /* NetworkHelper.m */,
 			);
 			path = FlickrTableView;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			files = (
 				A6FF04392014DF8F006142B7 /* ViewController.m in Sources */,
 				A6FF04442014DF8F006142B7 /* main.m in Sources */,
+				A6DA2267201F7E9A0092650A /* NetworkHelper.m in Sources */,
 				A663FB532017AE160087CDAF /* NetworkService.m in Sources */,
 				A6FF04362014DF8F006142B7 /* AppDelegate.m in Sources */,
 				A663FB5A2017C4A80087CDAF /* CustomCollectionViewCell.m in Sources */,

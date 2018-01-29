@@ -7,6 +7,7 @@
 //
 
 #import "NetworkService.h"
+#import "NetworkHelper.h"
 
 @interface NetworkService()
 
@@ -14,6 +15,8 @@
 @property(nonatomic,strong) NSURLSession *urlSession;
 @property(nonatomic,strong) NSURLSessionDownloadTask *downloadTask;
 @property(nonatomic,strong) NSURLSessionConfiguration *sessionConfiguration;
+@property(nonatomic,strong) NSMutableArray *flickrPhotosUrls;
+@property(nonatomic,strong) NSDictionary *FlickrPhotosResult;
 
 @end
 
@@ -22,12 +25,8 @@
 
 -(void)startImageLoading:(NSString*)name
 {
-    self.sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    self.urlSession = [NSURLSession sessionWithConfiguration:self.sessionConfiguration delegate:self delegateQueue:nil];
-    NSString *key = @"fe3f851fb56c3916a4ef3aa6772c236b";
-    NSString *urlString = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&text=%@&per_page=10&format=json&nojsoncallback=1", key, name];
-    self.downloadTask = [self.urlSession downloadTaskWithURL:[NSURL URLWithString:urlString]];
-    [self.downloadTask resume];
+    [self findFlickrPhotoWithSearchString:name];
+    
 }
 -(void)suspendNetworkLoading
 {
@@ -64,16 +63,14 @@
 
 -(void) URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
-    NSData *dataWithJson = [NSData dataWithContentsOfURL:location];
-    NSString *jsonData = [[NSString alloc] initWithData:dataWithJson encoding:NSUTF8StringEncoding];
+    NSData *dataWithImage = [NSData dataWithContentsOfURL:location];
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
         //        self.progressView.hidden = YES;
         //        self.cancelDownloadButton.hidden = YES;
         //        self.imageView.image = [UIImage imageWithData:data];
-        [self.output loadingIsDoneWithDataRecieved:dataWithJson];
-        
+        [self.output loadingIsDoneWithDataRecieved:dataWithImage];
     });
 }
 
@@ -89,17 +86,52 @@
 //}
 //
 
-//-(void)findFlickrPhotoWithSearchString:(NSString *)searchString
-//{
-//    NSString *urlString = [NetworkHelper URLForSearchString:searchString];
-//
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-//    [request setURL:[NSURL URLWithString:urlString]];
-//    [request setHTTPMethod:@"GET"];
-//    [request setValue:@"application/x-ww-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//    [request setTimeoutInterval:15];
-//}
+-(void)findFlickrPhotoWithSearchString:(NSString *)searchString
+{
+    NSString *urlString = [NetworkHelper urlForSearchString:searchString];
 
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue:@"application/x-ww-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setTimeoutInterval:15];
+    
+    NSURLSession *session ;
+    session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"json received");
+        NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.FlickrPhotosResult = [temp copy];
+            
+            [self parseJsonToUrls:self.FlickrPhotosResult];
+            
+            for (NSString *urlString in self.flickrPhotosUrls)
+            {
+                self.sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+                self.urlSession = [NSURLSession sessionWithConfiguration:self.sessionConfiguration delegate:self delegateQueue:nil];
+                self.downloadTask = [self.urlSession downloadTaskWithURL:[NSURL URLWithString:urlString]];
+                [self.downloadTask resume];
+            }
+        });
+        
+    }];
+    
+    [sessionDataTask resume];
+}
+
+- (void)parseJsonToUrls: (NSDictionary *)jsonPhotos
+{
+    NSDictionary *photosContainer = jsonPhotos[@"photos"];
+    NSDictionary *receivedPhotos = photosContainer[@"photo"];
+    self.flickrPhotosUrls = [NSMutableArray new];
+    
+    for (NSDictionary *photoInfo in receivedPhotos)
+    {
+        [self.flickrPhotosUrls addObject:[NetworkHelper urlForPictureWithFarm:photoInfo[@"farm"] andWithServer:photoInfo[@"server"] andWithPicture:photoInfo[@"id"] andWithSecret:photoInfo[@"secret"]]];
+    }
+}
 
 @end
 
