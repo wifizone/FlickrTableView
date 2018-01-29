@@ -91,7 +91,7 @@ static const CGFloat searchBarHeight = 40;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(100, 100);
+    return CGSizeMake(200, 200);
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

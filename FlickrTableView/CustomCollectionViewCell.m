@@ -22,11 +22,9 @@
     {
         self.backgroundColor = [UIColor whiteColor];
         
-        self.imageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, 10, 10)];
+        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         [self.contentView addSubview:self.imageView];
         
-        UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-        selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.8f];
     }
     
     return self;
@@ -43,7 +41,6 @@
     [super prepareForReuse];
     
     // сбрасываем цвета и image
-    self.backgroundColor = [UIColor whiteColor];
     self.image = nil;
 }
 
